@@ -33,7 +33,7 @@ shenPriceInUsd nDjed nShen nReverseAda adaPriceInUsd =
   let reverseInUsd = nReverseAda * adaPriceInUsd
       libiatyInUsd = nDjed
       equityInUsd = reverseInUsd - libiatyInUsd
-  in  equityInUsd / nShen
+   in equityInUsd / nShen
 
 -- Question 4
 -- Write a function that takes in two numbers and returns their quotient such that it is not greater than 1.
@@ -41,11 +41,12 @@ shenPriceInUsd nDjed nShen nReverseAda adaPriceInUsd =
 -- possible. To implement this function using both guards and if-then-else statements.
 f :: Double -> Double -> String
 f a b
-  |a == 0 && b == 0 = "0/0 be undefined"
-  |a == 0 || b == 0 = "Result = 0"
-  |a/b <= 1 = "Result: a/b = " ++ show (a/b)
-  |otherwise = "Result: b/a = " ++ show (b/a)
-
+  | a == 0 && b == 0 = "0/0 be undefined"
+  | a == 0 || b == 0 = "Result = 0"
+  | otherwise =
+    if a / b <= 1
+      then "Result: a/b = " ++ show (a / b)
+      else "Result: b/a = " ++ show (b / a)
 
 -- Question 5
 -- Write a function that takes in two numbers and calculates the sum of squares for the product and quotient
@@ -53,10 +54,12 @@ f a b
 -- let expression inside a where block.
 f2 :: Double -> Double -> String
 f2 a b
-  |b == 0 = "Cannot divide by 0"
-  |True = 
+  | b == 0 = "Cannot divide by 0"
+  | otherwise =
     let sqA = square a
-         where square x = x*x 
-    in show (sqA*sqB + sqA/sqB)
-         where sqB = let square' x = x^2 
-                     in square' b
+          where square x = x * x
+     in show (sqA * sqB + sqA / sqB)
+  where
+    sqB =
+      let square' x = x ^ 2
+       in square' b
