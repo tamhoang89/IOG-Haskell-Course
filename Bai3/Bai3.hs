@@ -31,8 +31,8 @@ checkConsumption' p h maxAllow
 shenPriceInUsd :: Double -> Double -> Double -> Double -> Double
 shenPriceInUsd nDjed nShen nReverseAda adaPriceInUsd =
   let reverseInUsd = nReverseAda * adaPriceInUsd
-      libiatyInUsd = nDjed
-      equityInUsd = reverseInUsd - libiatyInUsd
+      liabilityInUsd = nDjed
+      equityInUsd = reverseInUsd - liabilityInUsd
    in equityInUsd / nShen
 
 -- Question 4
@@ -57,9 +57,10 @@ f2 a b
   | b == 0 = "Cannot divide by 0"
   | otherwise =
     let sqA = square a
-          where square x = x * x
+         where square x = x * x
      in show (sqA * sqB + sqA / sqB)
   where
     sqB =
       let square' x = x ^ 2
        in square' b
+
