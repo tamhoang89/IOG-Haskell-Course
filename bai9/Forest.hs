@@ -32,7 +32,9 @@ Using GHCi, like the "Maze" game, this game should look like this:
 *Main> solveForest testForest [GoForward, GoLeft , GoRight]
 "YOU'VE FOUND THE EXIT!!"
 -}
+
 data Move = GoLeft | GoForward | GoRight
+
 data Forest a = Exit | Go { staNeed :: a,
                             left    :: Forest a,
                             forward :: Forest a, 
