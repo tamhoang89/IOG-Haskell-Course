@@ -1,20 +1,29 @@
+# MONAD
 [Nguồn1](http://learnyouahaskell.com/a-fistful-of-monads)
+
 [Nguồn2](http://learnyouahaskell.com/for-a-few-monads-more)
 
+## TỪ FUNCTOR VÀ APPLICATIVE
 Functor đại diện cho các kiểu dữ liệu có thể ánh xạ một hàm lên nó
-`fmap :: (Functor f) => (a -> b) -> f a -> f b`
+```
+fmap :: (Functor f) => (a -> b) -> f a -> f b
+```
 `(<$>)` là dạng trung tố của `fmap`
 
 Nếu hàm (a -> b) cũng được bọc trong 1 functor thì sao, khi đó Applicative xuất hiện, nó là lớp con của Functor:
-`(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b`
+```
+(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b
+```
 
 Tiếp tục thay đổi một chút đối với hàm, nếu nó nhận vào 1 giá trị thông thường và trả về 1 Applicative -> Chúng ta có lớp con của Applicative là Monad:
-`(>>=) :: (Monad m) => m a -> (a -> m b) -> m b`
+```
+(>>=) :: (Monad m) => m a -> (a -> m b) -> m b
+```
 
 Khi lần đầu tiên nói về functor, chúng ta đã thấy rằng đó là khái niệm hữu ích cho những giá trị mà ta có thể ánh xạ lên chúng. 
 Sau đó, ta đã phát triển thêm khái niệm này bằng cách giới thiệu các functor áp dụng, vốn cho phép ta xem các giá trị thuộc kiểu dữ liệu nhất định như những giá trị gắn với ngữ cảnh và dùng các hàm thông thường lên các giá trị đó trong khi vẫn giữ được ý nghĩa của các ngữ cảnh đó.
 
-Monad vốn là các functor ứng dụng được nâng cao, cũng giống như bản thân các functor ứng dụng là các functor nâng cao.
+Monad vốn là các functor áp dụng được nâng cao, cũng giống như bản thân các functor áp dụng là các functor nâng cao.
 
 ```
 type Monad :: (* -> *) -> Constraint
